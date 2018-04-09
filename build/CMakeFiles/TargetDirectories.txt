@@ -1,0 +1,8 @@
+/home/game/server/hwtrunk/build/CMakeFiles/rebuild_cache.dir
+/home/game/server/hwtrunk/build/CMakeFiles/edit_cache.dir
+/home/game/server/hwtrunk/build/base/src/CMakeFiles/rebuild_cache.dir
+/home/game/server/hwtrunk/build/base/src/CMakeFiles/edit_cache.dir
+/home/game/server/hwtrunk/build/base/src/CMakeFiles/base.dir
+/home/game/server/hwtrunk/build/rolesvr/src/CMakeFiles/rebuild_cache.dir
+/home/game/server/hwtrunk/build/rolesvr/src/CMakeFiles/edit_cache.dir
+/home/game/server/hwtrunk/build/rolesvr/src/CMakeFiles/rolesvr.dir
