@@ -1,19 +1,7 @@
-#ifndef _BASEDEFINE_
-#define _BASEDEFINE_
-#include <iostream>
-#include <vector>
-#include <pthread.h>      
-#include <netdb.h>
-#include <unistd.h>
-#include <sys/epoll.h>
-#include <sys/types.h>
-#include <sys/socket.h>
-#include <netinet/in.h>
-#include <arpa/inet.h>
-#include <fcntl.h> 
-#include <string.h>
-typedef unsigned char uint8;
-typedef unsigned int uint32;
+#ifndef _BASE_DEFINE_
+#define _BASE_DEFINE_
+
+#include "base_util.h"
 
 #define MIDDLE_BUFF_SIZE 10240
 #define MAX_BUFF_SIZE 102400
@@ -28,9 +16,10 @@ typedef unsigned int uint32;
 #define SVR_BUFF_SIZE	0x0100000		//= 1M
 #define SYS_BUFF_SIZE	0x010000		//= 64k
 
-#define GATE_BUFF_SIZE 0x08000//32K
+#define GATE_BUFF_SIZE 0x080000//32K
 
 #pragma pack(1)
+
 struct Clt_Head
 {
 	uint32 pack_start;	//开始符，验证用的
@@ -40,7 +29,7 @@ struct Clt_Head
 	uint32 sessionid;	//验证客户端合法性
 };
 
-struct  Svr_Head :public Clt_Head
+struct Svr_Head :public Clt_Head
 {
 	uint32 roleid;
 	uint32 cltnum;

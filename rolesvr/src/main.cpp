@@ -2,7 +2,11 @@
 
 int main()
 {
-	CSockets g_ser;
+	CSocketServer g_server;
+
+	g_server.Start();
+
+	g_server.Stop();
 	
 	return 0;
 }

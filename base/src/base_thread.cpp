@@ -1,4 +1,4 @@
-#include "base_include.h"
+#include "base_thread.h"
 
 BaseThread::BaseThread()
 {

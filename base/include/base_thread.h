@@ -1,6 +1,8 @@
 #ifndef _BASE_THREAD_H
 #define _BASE_THREAD_H
 
+#include"base_util.h"
+
 typedef void*(*tThreadPoc)(void*);
 
 class BaseThread

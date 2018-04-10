@@ -1,6 +1,9 @@
 #ifndef _BASESTREAM_H
 #define _BASESTREAM_H
 
+#include "base_util.h"
+#include "base_define.h"
+
 class CStream
 {
 public:

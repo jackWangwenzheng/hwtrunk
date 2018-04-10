@@ -1,14 +1,14 @@
-#ifndef _BASESOCKET_H_
-#define _BASESOCKET_H_
+#ifndef _BASE_SOCKET_H_
+#define _BASE_SOCKET_H_
 
 class CSocket
 {
 public:
-	int BindSocket(const struct sockaddr); 
-	int ListenScoket();
-	int AcceptSocket();
-	int RecvData();
-	int SendData();
+	// int BindSocket(const struct sockaddr); 
+	// int ListenScoket();
+	// int AcceptSocket();
+	// int RecvData();
+	// int SendData();
 public:
 	CSocket();
 	~CSocket();

@@ -1,12 +1,17 @@
 #ifndef _BASEEPOLL_H_
 #define _BASEEPOLL_H_
+
 #define MAX 1024
+
+#include"base_util.h"
+
 struct Event
 {	
 	int fd;
 	bool read;
 	bool write;
 	bool error;
+	void* ud;
 };
 
 class CEpoll
@@ -36,7 +41,15 @@ public:
 		int nfds = epoll_wait(epollFd, monitorEv, MAX, -1);
 		for (int i = 0; i < nfds; ++i)
 		{
-			(ev+i)->fd = monitorEv[i].data.fd;
+			if (monitorEv[i].data.ptr != NULL)
+			{
+				(ev+i)->ud = monitorEv[i].data.ptr;
+			}
+			else
+			{
+				(ev+i)->fd = monitorEv[i].data.fd;	
+			}
+			
 			(ev+i)->read = false;
 			(ev+i)->write = false;
 			(ev+i)->error = false;
@@ -69,7 +82,7 @@ public:
 	{
 		struct epoll_event ev;
 		ev.events = EPOLLIN | (enable ? EPOLLOUT : 0);
-		ev.data.ptr = ud;
+		ev.data.fd = sock;
 		int ret = epoll_ctl(epollFd, EPOLL_CTL_MOD, sock, &ev);
 		if(ret < 0)
 		{

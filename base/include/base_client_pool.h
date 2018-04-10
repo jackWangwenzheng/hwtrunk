@@ -1,6 +1,9 @@
 #ifndef BASE_CLIENT_POOL_H
 #define BASE_CLIENT_POOL_H
 
+#include"base_util.h"
+#include"base_stream.h"
+
 class BaseUser
 {
 public:
