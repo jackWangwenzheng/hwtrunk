@@ -13,8 +13,11 @@
 #include <arpa/inet.h>
 #include <fcntl.h> 
 #include <string.h>
+#include <strings.h>
+#include <map>
 
 typedef unsigned char uint8;
 typedef unsigned int uint32;
+typedef unsigned int socklen_t;
 
 #endif

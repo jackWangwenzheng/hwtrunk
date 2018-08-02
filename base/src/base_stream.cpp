@@ -1,4 +1,4 @@
-#include "base_include.h"
+#include "base_stream.h"
 
 CStream::CStream(uint32 nSize)
 {
@@ -13,7 +13,7 @@ CStream::~CStream()
 
 uint8& CStream::operator[](uint32 nindex)
 {
-	if (nindex > MIN_BUFF_SIZE)
+	if (nindex > 1024)
 	{
 		//Ô½½ç
 		return m_Buff[0];

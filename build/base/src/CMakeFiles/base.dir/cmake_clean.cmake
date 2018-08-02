@@ -1,5 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/base.dir/base_client_pool.cpp.o"
+  "CMakeFiles/base.dir/base_packet.cpp.o"
   "CMakeFiles/base.dir/base_socket.cpp.o"
   "CMakeFiles/base.dir/base_socket_server.cpp.o"
   "CMakeFiles/base.dir/base_stream.cpp.o"

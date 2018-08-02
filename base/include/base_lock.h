@@ -40,13 +40,12 @@ class AutoLock
 public:
 	inline AutoLock(BaseLock* pLock) :m_pLock(pLock)
 	{
-		pLock->lock();
+		m_pLock->lock();
 	}
 	inline virtual ~AutoLock()
 	{
 		m_pLock->unLock();
 	}
-
 private:
 	BaseLock* m_pLock;
 };

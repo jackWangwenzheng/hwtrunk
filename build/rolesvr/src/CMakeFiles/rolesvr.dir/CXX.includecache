@@ -11,6 +11,8 @@ base_util.h
 ../base/include/base_util.h
 base_stream.h
 ../base/include/base_stream.h
+base_define.h
+../base/include/base_define.h
 
 ../base/include/base_define.h
 base_util.h
@@ -27,28 +29,50 @@ base_define.h
 ../base/include/base_define.h
 base_stream.h
 ../base/include/base_stream.h
-base_client_pool.h
-../base/include/base_client_pool.h
 base_thread.h
 ../base/include/base_thread.h
 base_epoll.h
 ../base/include/base_epoll.h
+base_socket.h
+../base/include/base_socket.h
+base_packet.h
+../base/include/base_packet.h
+base_client_pool.h
+../base/include/base_client_pool.h
 base_socket_server.h
 ../base/include/base_socket_server.h
 
-../base/include/base_socket_server.h
+../base/include/base_lock.h
 base_util.h
 ../base/include/base_util.h
-base_epoll.h
-../base/include/base_epoll.h
+
+../base/include/base_packet.h
+base_stream.h
+../base/include/base_stream.h
 base_thread.h
 ../base/include/base_thread.h
+base_define.h
+../base/include/base_define.h
+base_lock.h
+../base/include/base_lock.h
+
+../base/include/base_socket.h
+base_util.h
+../base/include/base_util.h
+
+../base/include/base_socket_server.h
+base_epoll.h
+../base/include/base_epoll.h
+base_socket.h
+../base/include/base_socket.h
+base_thread.h
+../base/include/base_thread.h
+base_packet.h
+../base/include/base_packet.h
 
 ../base/include/base_stream.h
 base_util.h
 ../base/include/base_util.h
-base_define.h
-../base/include/base_define.h
 
 ../base/include/base_thread.h
 base_util.h
@@ -78,6 +102,10 @@ arpa/inet.h
 fcntl.h
 -
 string.h
+-
+strings.h
+-
+map
 -
 
 /home/game/server/hwtrunk/rolesvr/src/main.cpp

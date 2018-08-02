@@ -10,6 +10,7 @@ CSocketServer::~CSocketServer()
 
 int CSocketServer::Run()
 {
+    cout << "CSocketServer start" << endl;
     while(GetbActive())
     {
         struct Event ev[256];
@@ -18,6 +19,8 @@ int CSocketServer::Run()
 
         for(int i = 0;i<n;++i)
         {
+            //cout << ev[i].fd << "," << ev[i].read << "," << ev[i].write << "," << ev[i].error << endl;
+            cout << "continue num:" << n << endl;
             if(DoError(ev[i])) continue;
 
             if(DoRead(ev[i])) continue;
@@ -25,9 +28,12 @@ int CSocketServer::Run()
             if(DoWrite(ev[i])) continue;
         }
     }
+    cout << "CSocketServer end" << endl;
+
+    return 0;
 }
 
-void CSocketServer::Init(int nIP, int nPort)
+void CSocketServer::Init(int nIP, int nPort, CPacket* packet)
 {
     m_epoll.EpollCreate();
     
@@ -38,11 +44,21 @@ void CSocketServer::Init(int nIP, int nPort)
 
     m_listenfd = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
 
-    bind(m_listenfd,(struct sockaddr*)&_sockaddr_in, sizeof(_sockaddr_in));
+    if (bind(m_listenfd,(struct sockaddr*)&_sockaddr_in, sizeof(_sockaddr_in)) < 0)
+    {
+        printf("bind error\n");
+        return;
+    }
 
-    listen(m_listenfd, 10);
+    if (listen(m_listenfd, 10) < 0)
+    {
+        printf("listen error\n");
+        return;
+    }
 
     m_epoll.EpollAdd(m_listenfd);
+    m_packet = packet;
+    cout << "CSocketServer Init:Port=" << nPort << ",listenfd=" << m_listenfd << endl;
 }
 
 bool CSocketServer::DoWrite(Event& e)
@@ -51,7 +67,7 @@ bool CSocketServer::DoWrite(Event& e)
     {
         //send的事情
     }   
-    return true;
+    return false;
 }
 
 bool CSocketServer::DoRead(Event& e)
@@ -59,26 +75,50 @@ bool CSocketServer::DoRead(Event& e)
     if(e.read)
     {
         if(e.fd == m_listenfd) //有新的连接进来
-        {
+        { 
             socklen_t clilen;
             struct sockaddr_in clientaddr;
             int clientFd = accept(m_listenfd, (sockaddr *)&clientaddr, &clilen);
+            cout << "a new connection and fd:" << clientFd << endl;
+            if (clientFd < 0)
+            {
+                printf("accept clientFd error\n");
+                return false;
+            }
             m_epoll.EpollAdd(clientFd);
+            m_packet->creatNewUser(clientFd);
+            return true;
         }
         else 
         {
-            char buff[1024];
-            int n = recv(e.fd, buff, sizeof(buff), MSG_DONTWAIT);
-
-            if(n>0)
+            for(;;)
             {
+                int n = 0;
+                static char buff[4096];
+                {
+                    AutoLock lock(&m_lock);
+                    memset(buff,0,sizeof(buff));
+                    n = recv(e.fd, buff, sizeof(buff), MSG_DONTWAIT);
+                     //int n = recv(e.fd, buff, sizeof(buff), 0); //这种是阻塞模式，接受数据后会阻塞，等待下一个数据的到来，这样会阻塞整个线程
+                }
 
-            }else
-            {
-                //error
-                m_epoll.EpollDel(e.fd);
-                close(e.fd);
-                return true;
+                if(n>0)
+                {
+                    //cout << "recv,n=" << n << ",buff:"<< buff << endl;
+                    m_packet->onRecvData(e.fd, buff, n);
+                }
+                else
+                {
+                    if((n == 0) || errno != EAGAIN || errno != EWOULDBLOCK)
+                    {
+                        cout << "errno:" << errno << endl;
+                        m_epoll.EpollDel(e.fd);
+                        close(e.fd);
+                        return true;
+                    }
+                    //cout << "n=" << n <<",errno=" << errno << endl;
+                    break;    
+                }
             }
         }
     }
@@ -89,10 +129,11 @@ bool CSocketServer::DoError(Event& e)
 {
     if(e.error)
     {
-         m_epoll.EpollDel(e.fd);
+        m_epoll.EpollDel(e.fd);
         close(e.fd);
+        return true;
     }
-    return true;
+    return false;
 }
 
 //逻辑线程B在调用你这个函数

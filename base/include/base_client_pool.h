@@ -3,6 +3,7 @@
 
 #include"base_util.h"
 #include"base_stream.h"
+#include"base_define.h"
 
 class BaseUser
 {

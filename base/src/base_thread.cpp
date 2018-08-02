@@ -14,16 +14,17 @@ bool BaseThread::Start()
 	int err = CreatTheard(BaseThreadPoc);
 	if (err < 0)
 	{
+		printf("start error\n");
 		return false;
 	}
-	bActive = true;
+	GetbActive() = true;
 	return true;
 }
 
 int BaseThread::Stop()
 {
-   bActive = false;
    pthread_join(tid, NULL);
+   GetbActive() = false;
    tid = 0;
 }
 

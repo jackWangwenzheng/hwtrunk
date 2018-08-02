@@ -1,1 +1,1 @@
-/usr/bin/c++  -O0 -g  -rdynamic CMakeFiles/rolesvr.dir/main.cpp.o  -o ../../../bin/rolesvr -lpthread ../../../lib/libbase.a 
+/usr/bin/c++  -O0 -g -ldl  -rdynamic CMakeFiles/rolesvr.dir/main.cpp.o  -o ../../../bin/rolesvr -lpthread ../../../lib/libbase.a 

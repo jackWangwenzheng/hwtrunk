@@ -152,6 +152,33 @@ base_client_pool.cpp.s:
 	cd /home/game/server/hwtrunk/build && $(MAKE) -f base/src/CMakeFiles/base.dir/build.make base/src/CMakeFiles/base.dir/base_client_pool.cpp.s
 .PHONY : base_client_pool.cpp.s
 
+base_packet.o: base_packet.cpp.o
+
+.PHONY : base_packet.o
+
+# target to build an object file
+base_packet.cpp.o:
+	cd /home/game/server/hwtrunk/build && $(MAKE) -f base/src/CMakeFiles/base.dir/build.make base/src/CMakeFiles/base.dir/base_packet.cpp.o
+.PHONY : base_packet.cpp.o
+
+base_packet.i: base_packet.cpp.i
+
+.PHONY : base_packet.i
+
+# target to preprocess a source file
+base_packet.cpp.i:
+	cd /home/game/server/hwtrunk/build && $(MAKE) -f base/src/CMakeFiles/base.dir/build.make base/src/CMakeFiles/base.dir/base_packet.cpp.i
+.PHONY : base_packet.cpp.i
+
+base_packet.s: base_packet.cpp.s
+
+.PHONY : base_packet.s
+
+# target to generate assembly for a file
+base_packet.cpp.s:
+	cd /home/game/server/hwtrunk/build && $(MAKE) -f base/src/CMakeFiles/base.dir/build.make base/src/CMakeFiles/base.dir/base_packet.cpp.s
+.PHONY : base_packet.cpp.s
+
 base_socket.o: base_socket.cpp.o
 
 .PHONY : base_socket.o
@@ -272,6 +299,9 @@ help:
 	@echo "... base_client_pool.o"
 	@echo "... base_client_pool.i"
 	@echo "... base_client_pool.s"
+	@echo "... base_packet.o"
+	@echo "... base_packet.i"
+	@echo "... base_packet.s"
 	@echo "... base_socket.o"
 	@echo "... base_socket.i"
 	@echo "... base_socket.s"

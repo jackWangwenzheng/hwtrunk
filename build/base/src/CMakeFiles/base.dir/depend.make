@@ -7,22 +7,30 @@ base/src/CMakeFiles/base.dir/base_client_pool.cpp.o: ../base/include/base_stream
 base/src/CMakeFiles/base.dir/base_client_pool.cpp.o: ../base/include/base_util.h
 base/src/CMakeFiles/base.dir/base_client_pool.cpp.o: ../base/src/base_client_pool.cpp
 
+base/src/CMakeFiles/base.dir/base_packet.cpp.o: ../base/include/base_define.h
+base/src/CMakeFiles/base.dir/base_packet.cpp.o: ../base/include/base_lock.h
+base/src/CMakeFiles/base.dir/base_packet.cpp.o: ../base/include/base_packet.h
+base/src/CMakeFiles/base.dir/base_packet.cpp.o: ../base/include/base_stream.h
+base/src/CMakeFiles/base.dir/base_packet.cpp.o: ../base/include/base_thread.h
+base/src/CMakeFiles/base.dir/base_packet.cpp.o: ../base/include/base_util.h
+base/src/CMakeFiles/base.dir/base_packet.cpp.o: ../base/src/base_packet.cpp
+
 base/src/CMakeFiles/base.dir/base_socket.cpp.o: ../base/include/base_socket.h
+base/src/CMakeFiles/base.dir/base_socket.cpp.o: ../base/include/base_util.h
 base/src/CMakeFiles/base.dir/base_socket.cpp.o: ../base/src/base_socket.cpp
 
+base/src/CMakeFiles/base.dir/base_socket_server.cpp.o: ../base/include/base_define.h
 base/src/CMakeFiles/base.dir/base_socket_server.cpp.o: ../base/include/base_epoll.h
+base/src/CMakeFiles/base.dir/base_socket_server.cpp.o: ../base/include/base_lock.h
+base/src/CMakeFiles/base.dir/base_socket_server.cpp.o: ../base/include/base_packet.h
+base/src/CMakeFiles/base.dir/base_socket_server.cpp.o: ../base/include/base_socket.h
 base/src/CMakeFiles/base.dir/base_socket_server.cpp.o: ../base/include/base_socket_server.h
+base/src/CMakeFiles/base.dir/base_socket_server.cpp.o: ../base/include/base_stream.h
 base/src/CMakeFiles/base.dir/base_socket_server.cpp.o: ../base/include/base_thread.h
 base/src/CMakeFiles/base.dir/base_socket_server.cpp.o: ../base/include/base_util.h
 base/src/CMakeFiles/base.dir/base_socket_server.cpp.o: ../base/src/base_socket_server.cpp
 
-base/src/CMakeFiles/base.dir/base_stream.cpp.o: ../base/include/base_client_pool.h
-base/src/CMakeFiles/base.dir/base_stream.cpp.o: ../base/include/base_define.h
-base/src/CMakeFiles/base.dir/base_stream.cpp.o: ../base/include/base_epoll.h
-base/src/CMakeFiles/base.dir/base_stream.cpp.o: ../base/include/base_include.h
-base/src/CMakeFiles/base.dir/base_stream.cpp.o: ../base/include/base_socket_server.h
 base/src/CMakeFiles/base.dir/base_stream.cpp.o: ../base/include/base_stream.h
-base/src/CMakeFiles/base.dir/base_stream.cpp.o: ../base/include/base_thread.h
 base/src/CMakeFiles/base.dir/base_stream.cpp.o: ../base/include/base_util.h
 base/src/CMakeFiles/base.dir/base_stream.cpp.o: ../base/src/base_stream.cpp
 

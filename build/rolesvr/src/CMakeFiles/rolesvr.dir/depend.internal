@@ -6,6 +6,9 @@ rolesvr/src/CMakeFiles/rolesvr.dir/main.cpp.o
  ../base/include/base_define.h
  ../base/include/base_epoll.h
  ../base/include/base_include.h
+ ../base/include/base_lock.h
+ ../base/include/base_packet.h
+ ../base/include/base_socket.h
  ../base/include/base_socket_server.h
  ../base/include/base_stream.h
  ../base/include/base_thread.h

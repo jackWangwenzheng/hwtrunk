@@ -11,7 +11,6 @@ struct Event
 	bool read;
 	bool write;
 	bool error;
-	void* ud;
 };
 
 class CEpoll
@@ -41,18 +40,12 @@ public:
 		int nfds = epoll_wait(epollFd, monitorEv, MAX, -1);
 		for (int i = 0; i < nfds; ++i)
 		{
-			if (monitorEv[i].data.ptr != NULL)
-			{
-				(ev+i)->ud = monitorEv[i].data.ptr;
-			}
-			else
-			{
-				(ev+i)->fd = monitorEv[i].data.fd;	
-			}
+			(ev+i)->fd = monitorEv[i].data.fd;	
 			
 			(ev+i)->read = false;
 			(ev+i)->write = false;
 			(ev+i)->error = false;
+			
 			if(monitorEv[i].events&EPOLLIN)
 			{
 				(ev+i)->read = true;

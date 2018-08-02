@@ -2,12 +2,11 @@
 #define _BASESTREAM_H
 
 #include "base_util.h"
-#include "base_define.h"
 
 class CStream
 {
 public:
-	CStream(uint32 nSize = MIN_BUFF_SIZE);
+	CStream(uint32 nSize = 1024);
 	~CStream();
 public:
 	template <typename T> 
@@ -34,8 +33,6 @@ public:
 	uint32 position();					//返回最后位置指针
 	uint32 lenth();						//返回m_Buff的长度大小
 	void erase();						//清除数据
-
-
 private:
 	std::vector<uint8> m_Buff;
 	std::vector<uint8>::iterator m_Pointer;
